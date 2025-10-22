@@ -16,6 +16,19 @@
 </head>
 <body class="p-4 sm:p-8">
     <script>
+        // --- UTILITIES ---
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function selectRandom(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
         // Data containing all the planning references and facts
         const planningData = {
             refDischarge: "25/00853/DIS (Discharge of Condition 27)",
@@ -24,6 +37,7 @@
             posReference: "P.1706.22 Landscape Management Plan (Page 30)",
             rareTrees: 12,
             newTrees: 66,
+            totalTrees: 12 + 66,
             lawnArea: "2,391 m²",
             bioDate: "31 July 2025",
             bioScore: "zero (0)",
@@ -49,26 +63,39 @@
             // --- Letter Components ---
             
             // 1. Introduction based on style selection
-            let introParagraph;
-            if (style === 'formal') {
-                introParagraph = `I am writing as a local homeowner to lodge a robust, formal objection to the application ref **${planningData.refDischarge}**. This application is a clear attempt to secure retrospective approval for the developer's severe and fundamental breach of the initial planning consent (**${planningData.refOriginal}**). We urge the Council to reject this application and immediately enforce the required on-site remediation.`;
-            } else { // 'passionate'
-                introParagraph = `I am writing as a deeply concerned resident to register my strongest possible objection to the application for the Discharge of Condition 27, ref **${planningData.refDischarge}**. This proposal represents a fundamental challenge to the integrity of the planning system, as it seeks to retroactively excuse a severe, wilful breach of a core planning condition (**${planningData.refOriginal}**).`;
-            }
+            let introParagraphs = {
+                formal: [
+                    `I am writing as a local homeowner to lodge a robust, formal objection to the application ref **${planningData.refDischarge}**. This application is a clear attempt to secure retrospective approval for the developer's severe and fundamental breach of the initial planning consent (**${planningData.refOriginal}**). We urge the Council to reject this application and immediately enforce the required on-site remediation.`,
+                    `As a resident directly affected by the College Park development, I formally object to the **${planningData.refDischarge}** application. This discharge proposal effectively legalizes the developer's non-compliance with the core planning condition requiring the restoration and maintenance of the Walled Garden Public Open Space.`,
+                ],
+                passionate: [
+                    `I am writing as a deeply concerned resident to register my strongest possible objection to the application for the Discharge of Condition 27, ref **${planningData.refDischarge}**. This proposal represents a fundamental challenge to the integrity of the planning system, as it seeks to retroactively excuse a severe, wilful breach of a core planning condition (**${planningData.refOriginal}**).`,
+                    `The continuous attempts by the developer to change the goalposts and eliminate our promised public amenity are unacceptable. I object emphatically to **${planningData.refDischarge}** because it allows the developer to profit from their failure to deliver the Walled Garden/Orchard, which was a pivotal element in our decision to purchase property here.`,
+                ],
+                assertive: [
+                    `The Planning Team must reject the application ref **${planningData.refDischarge}** as it seeks to formally sanction the developer's illegal destruction of the Walled Garden/Orchard. The Council's duty is to enforce planning law, not facilitate the developer's avoidance of compliance. Immediate enforcement action is necessary.`,
+                    `I am formally calling on the Council's Planning Enforcement department to immediately reject **${planningData.refDischarge}**. This application is merely a paper exercise to disguise a clear breach of the original consent (**${planningData.refOriginal}**), and granting it would undermine the entire planning process.`,
+                ]
+            };
+            
+            const introParagraph = selectRandom(introParagraphs[style]);
 
-            // 2. Walled Garden Section (Core facts remain constant)
+            // 2. Walled Garden Section - Points are shuffled
+            const walledGardenPoints = shuffleArray([
+                `**Breach of POS:** The Walled Garden was designated as **Public Open Space (POS)** on the developer’s own documents (**${planningData.developerRef}** Landscape Management Plan, Page 30) with guaranteed **public access** (Ref: Christleton Parish Council Letter to CEO, 12 March 2025, Paragraph 1, sub-point 1).`,
+                `**Scale of Loss:** The developer willfully removed the **${planningData.rareTrees} rare apple trees** originally present during building works. The plans further required the planting of **${planningData.newTrees} new fruit trees** alongside **${planningData.lawnArea} of Germinal Eco Species Rich Lawn**. The developer’s failure constitutes a total loss of this mandated amenity.`,
+                `**Disguising Destruction:** The developer’s documentation (filed ${planningData.bioDate}) scoring the site at **${planningData.bioScore}** is a cynical tactic. They are attempting to use their illegal act of destruction to legally justify avoiding expensive on-site reinstatement. The value of this amenity is immeasurable to residents.`,
+                `**Off-site Inadequacy:** The proposal for an off-site payment is unacceptable. The promised on-site amenity on our doorstep—a vital social, visual, and ecological asset—cannot be replaced by a remote, disconnected financial contribution.`,
+            ]);
+
             const walledGardenSection = `
-### The Material Breach of Core Planning Conditions
+### Grounds for Absolute Refusal of Discharge Application ${planningData.refDischarge}
 
-#### 1. Walled Garden: Destruction of Mandated Public Amenity
+#### 1. Willful Breach of Mandated Planting and Public Access
 
-The original permission was contingent on the retention and establishment of a high-value green space. The current application seeks to remove the core benefits:
+The original planning permission was contingent on explicit commitments that created a material benefit for the community. The developer has failed on every point:
 
-* **Breach of POS:** The Walled Garden was designated as **Public Open Space (POS)** on the developer’s own documents (**${planningData.developerRef}** Landscape Management Plan, Page 30) with guaranteed **public access** (Ref: Christleton Parish Council Letter to CEO, 12 March 2025, Paragraph 1, sub-point 1).
-
-* **Scale of Loss:** During construction, the developer removed the **${planningData.rareTrees} rare apple trees** originally present, and subsequently failed to plant the required **${planningData.newTrees} new fruit trees** and the **${planningData.lawnArea} of Germinal Eco Species Rich Lawn**. The developer’s action to remove all vegetation and level the site constitutes a total loss of this mandated amenity.
-
-* **Disguising Destruction:** The developer’s documentation (filed ${planningData.bioDate}) scoring the site at **${planningData.bioScore}** is an effort to use their illegal destruction to justify an off-site financial payment. This proposed cash-in-lieu substitution is completely inadequate and demonstrates a wilful lack of respect for the community's promised amenity.
+* ${walledGardenPoints.join('\n\n* ')}
 `;
             
             // 3. Optional Fencing/Sports England Section
@@ -76,9 +103,9 @@ The original permission was contingent on the retention and establishment of a h
             let demandFencing = "";
             if (includeFencing) {
                 fencingSection = `
-#### 2. Pattern of Non-Compliance on Open Space
+#### 2. Pattern of Non-Compliance: Unauthorised Restriction of Secondary Green Space
 
-* **Fencing Off Communal Land:** I formally object to the parallel, unauthorised action of the developer in fencing off the Sports England-allocated green space opposite the new development. This unapproved restriction on a vital communal area is part of a wider strategy of eliminating public amenity and raises significant concerns about future, unapproved development.
+I formally object to the parallel, unauthorised action of the developer in fencing off the Sports England-allocated green space opposite the new development. This action, under the pretence of 'public safety,' restricts a critical communal space promised to residents. This demonstrates a pattern of changing goalposts and eliminating public amenity, which I fear is preparatory action for future, unapproved development.
 `;
                 demandFencing = `3. Issuance of an enforcement notice for the **immediate removal of the unauthorised fencing** on the Sports England plot.`;
             }
@@ -86,15 +113,21 @@ The original permission was contingent on the retention and establishment of a h
             // 4. Optional Procedural Failures Section 
             let proceduralSection = "";
             if (includeNotification) {
-                // Adjust title level based on whether fencing section is present
-                const proceduralSectionTitle = includeFencing ? `### Procedural Failures of Notification` : `#### 2. Procedural Failures of Notification`;
+                const proceduralPoints = shuffleArray([
+                    `I received **no formal notification** of the **${planningData.refDischarge}** application, despite being an immediately affected party whose property value premise (access to green space) is being fundamentally undermined.`,
+                    `The Council’s failure to notify residents about an application that removes a designated Public Open Space constitutes a serious procedural failure and lack of administrative fairness.`,
+                ]);
+
+                const legalDemand = selectRandom([
+                    `I formally request that the Council justify, by reference to the **${planningData.dmpoRef}**, why this fundamental change was deemed non-material and did not require mandatory notification to adjoining residents.`,
+                    `The failure to notify those most affected by the loss of a designated POS suggests a procedural flaw. I demand a written explanation referencing the **${planningData.dmpoRef}**.`,
+                ]);
 
                 proceduralSection = `
-${proceduralSectionTitle}
+### Procedural Failures and Lack of Transparency
 
-* **Lack of Due Process:** I received **no formal notification** of the **${planningData.refDischarge}** application, despite being an immediately affected party whose primary property value premise (access to green space) is being fundamentally undermined.
-
-* **Demand for Legal Review:** This failure to notify residents about an application that removes a designated Public Open Space constitutes a serious procedural failure. I formally request that the Council justify, by reference to the **${planningData.dmpoRef}**, why this material change was processed without mandatory notification to adjoining residents.
+* ${proceduralPoints.join('\n\n* ')}
+* **Demand for Legal Justification:** ${legalDemand}
 `;
             }
 
@@ -102,11 +135,11 @@ ${proceduralSectionTitle}
             const demandsSection = `
 ### Demand for Immediate and Decisive Enforcement
 
-The Planning Team must prevent the developer from finalizing this breach. I demand the following immediate actions:
+The Planning Team must act decisively to protect the integrity of the local amenity and the planning process:
 
 1.  **Immediate and Unequivocal REFUSAL** of Discharge of Condition 27 (**${planningData.refDischarge}**).
 
-2.  **IMMEDIATE INITIATION OF ENFORCEMENT ACTION** to mandate the full restoration of the Walled Garden to its required specification, including the **replanting of all ${planningData.rareTrees + planningData.newTrees} fruit trees (${planningData.rareTrees} rare, ${planningData.newTrees} new)**, the **${planningData.lawnArea} rich lawn**, and the restoration of **guaranteed public access**.
+2.  **IMMEDIATE INITIATION OF ENFORCEMENT ACTION** to mandate the full restoration of the Walled Garden to its required specification, including the **replanting of all ${planningData.totalTrees} fruit trees** (including the ${planningData.rareTrees} rare varieties), the **${planningData.lawnArea} rich lawn**, and the restoration of **guaranteed public access**.
 
 ${demandFencing}
 `;
@@ -169,10 +202,10 @@ ${demandFencing}
             <!-- Input Column -->
             <div class="space-y-4">
                 <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Your Details</h2>
-                <input type="text" id="name" placeholder="Your Full Name(s)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" oninput="generateLetter()">
-                <input type="text" id="address" placeholder="Your Full Street Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" oninput="generateLetter()">
-                <input type="text" id="postcode" placeholder="Your Postcode" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" oninput="generateLetter()">
-                <input type="email" id="email" placeholder="Your Email Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" oninput="generateLetter()">
+                <input type="text" id="name" placeholder="Your Full Name(s)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" oninput="generateLetter()">
+                <input type="text" id="address" placeholder="Your Full Street Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" oninput="generateLetter()">
+                <input type="text" id="postcode" placeholder="Your Postcode" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" oninput="generateLetter()">
+                <input type="email" id="email" placeholder="Your Email Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" oninput="generateLetter()">
             </div>
 
             <!-- Options Column -->
@@ -199,19 +232,20 @@ ${demandFencing}
 
                 <div class="space-y-2 pt-4 border-t border-gray-200">
                     <label for="style" class="block text-gray-700 font-medium">Select Letter Tone/Style:</label>
-                    <select id="style" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" onchange="generateLetter()">
-                        <option value="formal">Formal & Structured (Default)</option>
-                        <option value="passionate">Passionate & Emotion-Driven</option>
+                    <select id="style" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500" onchange="generateLetter()">
+                        <option value="formal">1. Formal & Structured</option>
+                        <option value="passionate">2. Passionate & Emotion-Driven</option>
+                        <option value="assertive">3. Assertive/Enforcement-Focused</option>
                     </select>
-                    <p class="text-sm text-gray-500">Changes phrasing slightly for unique submissions.</p>
+                    <p class="text-sm text-gray-500">Choosing different tones and toggling the checkboxes generates unique submissions.</p>
                 </div>
             </div>
         </div>
 
         <!-- Output and Actions -->
         <div class="mb-6">
-            <h2 class="text-xl font-semibold text-gray-800 border-b pb-2 mb-3">Generated Objection Letter (Markdown)</h2>
-            <textarea id="outputArea" rows="18" readonly class="w-full p-4 border border-gray-300 rounded-lg bg-gray-50 text-gray-800 font-mono text-sm resize-none"></textarea>
+            <h2 class="text-xl font-semibold text-gray-800 border-b pb-2 mb-3">Generated Objection Letter (Plain Text)</h2>
+            <textarea id="outputArea" rows="18" readonly class="w-full p-4 border border-gray-300 rounded-lg bg-gray-50 text-gray-800 font-mono text-sm resize-none" onfocus="this.select()"></textarea>
         </div>
         
         <div class="flex justify-center">
@@ -221,7 +255,7 @@ ${demandFencing}
         </div>
 
         <p class="mt-6 text-center text-sm text-gray-500">
-            **Instructions:** Copy the text above, paste it into an email to the Planning Team (enforcement is key), and send it off!
+            **Instructions:** Copy the text above, paste it into an email to the Planning Team, and send it off!
         </p>
 
     </div>
