@@ -454,10 +454,15 @@ The developer's pattern of broken promises shows a clear strategy to maximize pr
                     this.classList.add('active', 'border-blue-600', 'text-gray-700', 'font-semibold');
                     this.classList.remove('text-gray-500', 'border-transparent', 'hover:border-gray-300', 'font-medium');
 
+                    // --- FIX APPLIED HERE ---
                     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                    $('index').classList.add('active'); // Fallback in case ID is dynamic
                     document.getElementById(this.dataset.tab).classList.add('active');
-                    generateLetter();
+                    // --- END FIX ---
+                    
+                    // Only regenerate letter if we are going to the generator tab
+                    if (this.dataset.tab === 'generator') {
+                        generateLetter();
+                    }
                 });
             });
         });
