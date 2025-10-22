@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Park Objection letter generator - Walled Garden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+        /* Custom scrollbar for output area */
+        #outputArea::-webkit-scrollbar { width: 8px; }
+        #outputArea::-webkit-scrollbar-thumb { background-color: #a0aec0; border-radius: 4px; }
+        #outputArea::-webkit-scrollbar-track { background-color: #edf2f7; }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <script>
+        // Data containing all the planning references and facts
+        const planningData = {
+            refDischarge: "25/00853/DIS (Discharge of Condition 27)",
+            refOriginal: "21/03468/FUL",
+            developerRef: "P.1706.22",
+            posReference: "P.1706.22 Landscape Management Plan (Page 30)",
+            rareTrees: 12,
+            newTrees: 66,
+            lawnArea: "2,391 m²",
+            bioDate: "31 July 2025",
+            bioScore: "zero (0)",
+            dmpoRef: "Town and Country Planning (Development Management Procedure) (England) Order 2015 (DMPO 2015)"
+        };
+
+        function generateLetter() {
+            const name = document.getElementById('name').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const postcode = document.getElementById('postcode').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const date = new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            const includeFencing = document.getElementById('includeFencing').checked;
+            const includeNotification = document.getElementById('includeNotification').checked;
+            const style = document.getElementById('style').value;
+            
+            if (!name || !address || !postcode || !email) {
+                document.getElementById('outputArea').value = "Please fill in all required contact details.";
+                return;
+            }
+
+            // --- Letter Components ---
+            
+            // 1. Introduction based on style selection
+            let introParagraph;
+            if (style === 'formal') {
+                introParagraph = `I am writing as a local homeowner to lodge a robust, formal objection to the application ref **${planningData.refDischarge}**. This application is a clear attempt to secure retrospective approval for the developer's severe and fundamental breach of the initial planning consent (**${planningData.refOriginal}**). We urge the Council to reject this application and immediately enforce the required on-site remediation.`;
+            } else { // 'passionate'
+                introParagraph = `I am writing as a deeply concerned resident to register my strongest possible objection to the application for the Discharge of Condition 27, ref **${planningData.refDischarge}**. This proposal represents a fundamental challenge to the integrity of the planning system, as it seeks to retroactively excuse a severe, wilful breach of a core planning condition (**${planningData.refOriginal}**).`;
+            }
+
+            // 2. Walled Garden Section (Core facts remain constant)
+            const walledGardenSection = `
+### The Material Breach of Core Planning Conditions
+
+#### 1. Walled Garden: Destruction of Mandated Public Amenity
+
+The original permission was contingent on the retention and establishment of a high-value green space. The current application seeks to remove the core benefits:
+
+* **Breach of POS:** The Walled Garden was designated as **Public Open Space (POS)** on the developer’s own documents (**${planningData.developerRef}** Landscape Management Plan, Page 30) with guaranteed **public access** (Ref: Christleton Parish Council Letter to CEO, 12 March 2025, Paragraph 1, sub-point 1).
+
+* **Scale of Loss:** During construction, the developer removed the **${planningData.rareTrees} rare apple trees** originally present, and subsequently failed to plant the required **${planningData.newTrees} new fruit trees** and the **${planningData.lawnArea} of Germinal Eco Species Rich Lawn**. The developer’s action to remove all vegetation and level the site constitutes a total loss of this mandated amenity.
+
+* **Disguising Destruction:** The developer’s documentation (filed ${planningData.bioDate}) scoring the site at **${planningData.bioScore}** is an effort to use their illegal destruction to justify an off-site financial payment. This proposed cash-in-lieu substitution is completely inadequate and demonstrates a wilful lack of respect for the community's promised amenity.
+`;
+            
+            // 3. Optional Fencing/Sports England Section
+            let fencingSection = "";
+            let demandFencing = "";
+            if (includeFencing) {
+                fencingSection = `
+#### 2. Pattern of Non-Compliance on Open Space
+
+* **Fencing Off Communal Land:** I formally object to the parallel, unauthorised action of the developer in fencing off the Sports England-allocated green space opposite the new development. This unapproved restriction on a vital communal area is part of a wider strategy of eliminating public amenity and raises significant concerns about future, unapproved development.
+`;
+                demandFencing = `3. Issuance of an enforcement notice for the **immediate removal of the unauthorised fencing** on the Sports England plot.`;
+            }
+
+            // 4. Optional Procedural Failures Section 
+            let proceduralSection = "";
+            if (includeNotification) {
+                // Adjust title level based on whether fencing section is present
+                const proceduralSectionTitle = includeFencing ? `### Procedural Failures of Notification` : `#### 2. Procedural Failures of Notification`;
+
+                proceduralSection = `
+${proceduralSectionTitle}
+
+* **Lack of Due Process:** I received **no formal notification** of the **${planningData.refDischarge}** application, despite being an immediately affected party whose primary property value premise (access to green space) is being fundamentally undermined.
+
+* **Demand for Legal Review:** This failure to notify residents about an application that removes a designated Public Open Space constitutes a serious procedural failure. I formally request that the Council justify, by reference to the **${planningData.dmpoRef}**, why this material change was processed without mandatory notification to adjoining residents.
+`;
+            }
+
+            // 5. Demands Section
+            const demandsSection = `
+### Demand for Immediate and Decisive Enforcement
+
+The Planning Team must prevent the developer from finalizing this breach. I demand the following immediate actions:
+
+1.  **Immediate and Unequivocal REFUSAL** of Discharge of Condition 27 (**${planningData.refDischarge}**).
+
+2.  **IMMEDIATE INITIATION OF ENFORCEMENT ACTION** to mandate the full restoration of the Walled Garden to its required specification, including the **replanting of all ${planningData.rareTrees + planningData.newTrees} fruit trees (${planningData.rareTrees} rare, ${planningData.newTrees} new)**, the **${planningData.lawnArea} rich lawn**, and the restoration of **guaranteed public access**.
+
+${demandFencing}
+`;
+            
+            // --- Final Assembly ---
+            const fullLetter = `To: The Planning Team (Attn: Head of Planning Enforcement), Cheshire West and Chester Council\n\n` +
+                                `From: ${name}\n` +
+                                `Address: ${address}, ${postcode}\n` +
+                                `Email: ${email}\n` +
+                                `Date: ${date}\n\n` +
+                                `Subject: FORMAL OBJECTION AGAINST APPLICATION ${planningData.refDischarge} – Requesting Enforcement and Upholding Original Planning Integrity (${planningData.refOriginal})\n\n` +
+                                introParagraph + '\n' +
+                                walledGardenSection + '\n' +
+                                fencingSection + '\n' +
+                                proceduralSection + '\n' +
+                                demandsSection;
+
+
+            document.getElementById('outputArea').value = fullLetter.trim();
+        }
+
+        function copyLetter() {
+            const outputArea = document.getElementById('outputArea');
+            outputArea.select();
+            outputArea.setSelectionRange(0, 99999); // For mobile devices
+            try {
+                const successful = document.execCommand('copy');
+                const message = successful ? 'Letter copied to clipboard!' : 'Copy failed. Please copy manually.';
+                alert(message);
+            } catch (err) {
+                alert('Copy failed: Your browser does not support automatic copy. Please copy manually.');
+            }
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            generateLetter(); // Generate default letter on load
+        }
+    </script>
+
+    <div class="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6 md:p-10 border border-gray-100">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-6 border-b pb-2">College Park Objection Letter Generator - Walled Garden</h1>
+
+        <!-- INSTRUCTION BOX -->
+        <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-lg shadow-md" role="alert">
+            <p class="font-bold text-lg">IMPORTANT: Where to Send Your Objection</p>
+            <p class="mt-2 text-sm">Please copy the generated letter and **email it directly** to the responsible Planning Officer for enforcement action:</p>
+            <p class="font-mono bg-red-100 text-red-800 p-2 mt-2 rounded-md inline-block text-base select-all">
+                jill.stephens@cheshirewestandchester.gov.uk
+            </p>
+            <p class="mt-2 text-sm">Ensure your subject line remains the same as generated below.</p>
+        </div>
+        <!-- END INSTRUCTION BOX -->
+        
+        <p class="text-gray-600 mb-6">
+            Fill in your details, customize the letter with the options below, and click 'Copy Letter' to send your unique, formal objection to the Council.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Input Column -->
+            <div class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Your Details</h2>
+                <input type="text" id="name" placeholder="Your Full Name(s)" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" oninput="generateLetter()">
+                <input type="text" id="address" placeholder="Your Full Street Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" oninput="generateLetter()">
+                <input type="text" id="postcode" placeholder="Your Postcode" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" oninput="generateLetter()">
+                <input type="email" id="email" placeholder="Your Email Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" oninput="generateLetter()">
+            </div>
+
+            <!-- Options Column -->
+            <div class="space-y-4">
+                <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Customisation Options</h2>
+                
+                <div class="space-y-3">
+                    <h3 class="font-medium text-gray-700">Select Objection Points:</h3>
+                    
+                    <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" id="includeFencing" checked class="h-5 w-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" onchange="generateLetter()">
+                            <span class="text-gray-700 font-medium">Include objection to **Unauthorized Fencing** (Sports England plot).</span>
+                        </label>
+                    </div>
+
+                    <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" id="includeNotification" checked class="h-5 w-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" onchange="generateLetter()">
+                            <span class="text-gray-700 font-medium">Include objection to **Lack of Resident Notification** (Procedural Failure).</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-4 border-t border-gray-200">
+                    <label for="style" class="block text-gray-700 font-medium">Select Letter Tone/Style:</label>
+                    <select id="style" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" onchange="generateLetter()">
+                        <option value="formal">Formal & Structured (Default)</option>
+                        <option value="passionate">Passionate & Emotion-Driven</option>
+                    </select>
+                    <p class="text-sm text-gray-500">Changes phrasing slightly for unique submissions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output and Actions -->
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 border-b pb-2 mb-3">Generated Objection Letter (Markdown)</h2>
+            <textarea id="outputArea" rows="18" readonly class="w-full p-4 border border-gray-300 rounded-lg bg-gray-50 text-gray-800 font-mono text-sm resize-none"></textarea>
+        </div>
+        
+        <div class="flex justify-center">
+            <button onclick="copyLetter()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-150 ease-in-out transform hover:scale-105">
+                Copy Letter to Clipboard
+            </button>
+        </div>
+
+        <p class="mt-6 text-center text-sm text-gray-500">
+            **Instructions:** Copy the text above, paste it into an email to the Planning Team (enforcement is key), and send it off!
+        </p>
+
+    </div>
+</body>
+</html>
