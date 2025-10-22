@@ -44,6 +44,115 @@
             dmpoRef: "Town and Country Planning (Development Management Procedure) (England) Order 2015 (DMPO 2015)"
         };
 
+        // --- Core Phrasing Variations for Maximum Uniqueness ---
+        const phrases = {
+            // Tone 1: Formal & Structured
+            formal: {
+                introLead: [
+                    `I am writing as a local homeowner to lodge a robust, formal objection to the application ref **${planningData.refDischarge}**.`,
+                    `Please register my formal objection to the proposed Discharge of Condition application ref **${planningData.refDischarge}**.`,
+                    `As an immediately affected resident, I formally oppose the submission ref **${planningData.refDischarge}**.`,
+                ],
+                introReason: [
+                    `This application is a clear attempt to secure retrospective approval for the developer's severe and fundamental breach of the initial planning consent (**${planningData.refOriginal}**).`,
+                    `The proposal seeks to retroactively excuse a severe, willful breach of a core planning condition tied to the original consent (**${planningData.refOriginal}**).`,
+                    `The acceptance of this Discharge application would constitute the Council's ratification of the developer's non-compliance with the original permission (**${planningData.refOriginal}**).`,
+                ],
+                conclusion: [
+                    `We urge the Council to reject this application and immediately enforce the required on-site remediation.`,
+                    `I request the Council reject this application outright and move swiftly to enforce the full reinstatement of the public amenity.`,
+                    `The integrity of the planning process demands the immediate refusal of this discharge and the commencement of enforcement procedures.`,
+                ]
+            },
+            // Tone 2: Passionate & Emotion-Driven
+            passionate: {
+                introLead: [
+                    `I am writing as a deeply concerned resident to register my strongest possible objection to the application for the Discharge of Condition 27, ref **${planningData.refDischarge}**.`,
+                    `I object emphatically to the developer's continued disregard for community promises, as represented by the application **${planningData.refDischarge}**.`,
+                    `The ongoing violation of the Walled Garden plan forces me to submit my strongest possible refusal for the application **${planningData.refDischarge}**.`,
+                ],
+                introReason: [
+                    `This proposal represents a fundamental challenge to the integrity of the planning system, as it seeks to retroactively excuse a severe, wilful breach of a core planning condition.`,
+                    `This discharge application allows the developer to profit from their failure to deliver the Walled Garden/Orchard, which was a pivotal element in our decision to purchase property here.`,
+                    `The continuous attempts by the developer to change the goalposts and eliminate our promised public amenity are unacceptable and an insult to the community.`,
+                ],
+                conclusion: [
+                    `The Planning Team must take decisive action to protect the local amenity and the planning process.`,
+                    `We demand that the Council upholds the original agreements and protects residents from this egregious developer conduct.`,
+                    `I urge the Council to show leadership by immediately refusing this discharge and enforcing the restoration of our communal space.`,
+                ]
+            },
+            // Tone 3: Assertive/Enforcement-Focused
+            assertive: {
+                introLead: [
+                    `The Planning Team must reject the application ref **${planningData.refDischarge}** as it seeks to formally sanction the developer's illegal destruction of the Walled Garden/Orchard.`,
+                    `I formally call on the Council's Planning Enforcement department to immediately reject the application **${planningData.refDischarge}**.`,
+                    `This letter serves as a directive to the Council to refuse the Discharge of Conditions application **${planningData.refDischarge}** and commence mandatory enforcement.`,
+                ],
+                introReason: [
+                    `The Council's duty is to enforce planning law, not facilitate the developer's avoidance of compliance. Immediate enforcement action is necessary.`,
+                    `This application is merely a paper exercise to disguise a clear breach of the original consent, and granting it would severely undermine the entire planning process.`,
+                    `Acceptance of this discharge would set a negative and dangerous precedent, confirming that developers can breach core conditions without consequence.`,
+                ],
+                conclusion: [
+                    `The integrity of the planning process requires the full and immediate rejection of this discharge and subsequent enforcement.`,
+                    `Failure to enforce the required restoration would represent a catastrophic failure of the Council's oversight duties.`,
+                    `The refusal of this application and immediate enforcement of Condition 27 is the only course of action consistent with statutory duty.`,
+                ]
+            },
+            // Shared Detail Phrasing (Randomized within the content)
+            details: {
+                breachIntro: [
+                    `The original planning permission was contingent on explicit commitments that created a material benefit for the community. The developer has failed on every point:`,
+                    `The original consent was secured on the basis of clear obligations to the community that have been completely violated:`,
+                    `The material benefit secured by the original planning consent has been destroyed, proving the developer's non-compliance:`,
+                ],
+                posReference: [
+                    `The Walled Garden was designated as **Public Open Space (POS)** on the developer’s own documents (**${planningData.developerRef}** Landscape Management Plan, Page 30)`,
+                    `The Walled Garden was officially marked as **Public Open Space (POS)** in the master plans (**${planningData.developerRef}** Page 30)`,
+                    `Planning permission required the Walled Garden to be **Public Open Space (POS)**, as shown in the Landscape Management Plan.`,
+                ],
+                publicAccess: [
+                    `with guaranteed **public access** (Ref: Christleton Parish Council Letter to CEO, 12 March 2025, Paragraph 1, sub-point 1).`,
+                    `to be publicly accessible to residents and the village (documented in the Parish Council's correspondence).`,
+                    `offering full communal access, a promise documented in the Parish Council's objections to the CEO.`,
+                ],
+                destructionAction: [
+                    `The developer willfully removed the **${planningData.rareTrees} rare apple trees** originally present during building works.`,
+                    `The developer demolished the **${planningData.rareTrees} rare apple trees** that were specifically meant to be retained.`,
+                    `The **${planningData.rareTrees} rare apple trees** were destroyed and cleared from the site by the developer.`,
+                ],
+                plantingRequirement: [
+                    `Furthermore, the plans required the planting of **${planningData.newTrees} new fruit trees** alongside **${planningData.lawnArea} of Germinal Eco Species Rich Lawn**.`,
+                    `The approved scheme included the installation of **${planningData.newTrees} fruit trees** and **${planningData.lawnArea} of species-rich lawn**.`,
+                    `The developer was legally obligated to plant **${planningData.newTrees} new fruit trees** and cultivate **${planningData.lawnArea} of Germinal Eco Species Rich Lawn**.`,
+                ],
+                bioTactic: [
+                    `The developer’s documentation (filed ${planningData.bioDate}) scoring the site at **${planningData.bioScore}** is a cynical tactic. They are attempting to use their illegal act of destruction to legally justify avoiding on-site reinstatement.`,
+                    `By marking the destroyed land as "Artificial Unvegetated" with a **${planningData.bioScore}** score (filed ${planningData.bioDate}), the developer seeks to profit from their own non-compliance.`,
+                    `The low biodiversity score of **${planningData.bioScore}** is a deliberate misrepresentation, using the cleared land as justification to abandon the original planting requirement.`,
+                ],
+                offSiteRefusal: [
+                    `The proposal for an off-site payment is unacceptable. The value of this space is immeasurable—visually, socially, and ecologically—on our doorstep.`,
+                    `A remote, disconnected financial contribution is no substitute for the promised on-site amenity adjacent to our homes.`,
+                    `We categorically reject the offer of off-site compensation; the amenity must be restored where it was promised.`,
+                ],
+                enforcementDemands: {
+                    refuse: [
+                        `**Immediate and Unequivocal REFUSAL** of Discharge of Condition 27 (**${planningData.refDischarge}**).`,
+                        `**Unconditional rejection** of the Discharge of Condition 27 application (**${planningData.refDischarge}**).`,
+                        `**Formal refusal** of the developer’s attempt to discharge Condition 27 (**${planningData.refDischarge}**).`,
+                    ],
+                    restore: [
+                        `**IMMEDIATE INITIATION OF ENFORCEMENT ACTION** to mandate the full restoration of the Walled Garden to its required specification, including the **replanting of all ${planningData.totalTrees} fruit trees** (including the ${planningData.rareTrees} rare varieties), the **${planningData.lawnArea} rich lawn**, and the restoration of **guaranteed public access**.`,
+                        `**Mandatory Enforcement** to compel the developer to reinstate the Walled Garden with all **${planningData.totalTrees} fruit trees** and the **${planningData.lawnArea} rich lawn**, and restore **public access** immediately.`,
+                        `A clear **Enforcement Notice** must be issued compelling the planting of all **${planningData.totalTrees} fruit trees** (including rare varieties) and the **${planningData.lawnArea} rich lawn**, restoring the guaranteed **public access** to the Walled Garden.`,
+                    ]
+                }
+            }
+        };
+
+
         function generateLetter() {
             const name = document.getElementById('name').value.trim();
             const address = document.getElementById('address').value.trim();
@@ -62,30 +171,15 @@
 
             // --- Letter Components ---
             
-            // 1. Introduction based on style selection
-            let introParagraphs = {
-                formal: [
-                    `I am writing as a local homeowner to lodge a robust, formal objection to the application ref **${planningData.refDischarge}**. This application is a clear attempt to secure retrospective approval for the developer's severe and fundamental breach of the initial planning consent (**${planningData.refOriginal}**). We urge the Council to reject this application and immediately enforce the required on-site remediation.`,
-                    `As a resident directly affected by the College Park development, I formally object to the **${planningData.refDischarge}** application. This discharge proposal effectively legalizes the developer's non-compliance with the core planning condition requiring the restoration and maintenance of the Walled Garden Public Open Space.`,
-                ],
-                passionate: [
-                    `I am writing as a deeply concerned resident to register my strongest possible objection to the application for the Discharge of Condition 27, ref **${planningData.refDischarge}**. This proposal represents a fundamental challenge to the integrity of the planning system, as it seeks to retroactively excuse a severe, wilful breach of a core planning condition (**${planningData.refOriginal}**).`,
-                    `The continuous attempts by the developer to change the goalposts and eliminate our promised public amenity are unacceptable. I object emphatically to **${planningData.refDischarge}** because it allows the developer to profit from their failure to deliver the Walled Garden/Orchard, which was a pivotal element in our decision to purchase property here.`,
-                ],
-                assertive: [
-                    `The Planning Team must reject the application ref **${planningData.refDischarge}** as it seeks to formally sanction the developer's illegal destruction of the Walled Garden/Orchard. The Council's duty is to enforce planning law, not facilitate the developer's avoidance of compliance. Immediate enforcement action is necessary.`,
-                    `I am formally calling on the Council's Planning Enforcement department to immediately reject **${planningData.refDischarge}**. This application is merely a paper exercise to disguise a clear breach of the original consent (**${planningData.refOriginal}**), and granting it would undermine the entire planning process.`,
-                ]
-            };
+            // 1. Introduction
+            const introParagraph = selectRandom(phrases[style].introLead) + ' ' + selectRandom(phrases[style].introReason);
             
-            const introParagraph = selectRandom(introParagraphs[style]);
-
             // 2. Walled Garden Section - Points are shuffled
             const walledGardenPoints = shuffleArray([
-                `**Breach of POS:** The Walled Garden was designated as **Public Open Space (POS)** on the developer’s own documents (**${planningData.developerRef}** Landscape Management Plan, Page 30) with guaranteed **public access** (Ref: Christleton Parish Council Letter to CEO, 12 March 2025, Paragraph 1, sub-point 1).`,
-                `**Scale of Loss:** The developer willfully removed the **${planningData.rareTrees} rare apple trees** originally present during building works. The plans further required the planting of **${planningData.newTrees} new fruit trees** alongside **${planningData.lawnArea} of Germinal Eco Species Rich Lawn**. The developer’s failure constitutes a total loss of this mandated amenity.`,
-                `**Disguising Destruction:** The developer’s documentation (filed ${planningData.bioDate}) scoring the site at **${planningData.bioScore}** is a cynical tactic. They are attempting to use their illegal act of destruction to legally justify avoiding expensive on-site reinstatement. The value of this amenity is immeasurable to residents.`,
-                `**Off-site Inadequacy:** The proposal for an off-site payment is unacceptable. The promised on-site amenity on our doorstep—a vital social, visual, and ecological asset—cannot be replaced by a remote, disconnected financial contribution.`,
+                selectRandom(phrases.details.destructionAction) + ' ' + selectRandom(phrases.details.plantingRequirement) + ' The developer\'s action constitutes a total loss of this mandated amenity.',
+                selectRandom(phrases.details.posReference) + ' ' + selectRandom(phrases.details.publicAccess) + ' The developer has now eliminated all required planting and public access.',
+                selectRandom(phrases.details.bioTactic) + ' The value of this space, as recognized by the Parish Council, is immeasurable—visually, socially, and ecologically.',
+                selectRandom(phrases.details.offSiteRefusal) + ' The amenity must be restored where it was promised.',
             ]);
 
             const walledGardenSection = `
@@ -93,7 +187,7 @@
 
 #### 1. Willful Breach of Mandated Planting and Public Access
 
-The original planning permission was contingent on explicit commitments that created a material benefit for the community. The developer has failed on every point:
+${selectRandom(phrases.details.breachIntro)}
 
 * ${walledGardenPoints.join('\n\n* ')}
 `;
@@ -105,7 +199,7 @@ The original planning permission was contingent on explicit commitments that cre
                 fencingSection = `
 #### 2. Pattern of Non-Compliance: Unauthorised Restriction of Secondary Green Space
 
-I formally object to the parallel, unauthorised action of the developer in fencing off the Sports England-allocated green space opposite the new development. This action, under the pretence of 'public safety,' restricts a critical communal space promised to residents. This demonstrates a pattern of changing goalposts and eliminating public amenity, which I fear is preparatory action for future, unapproved development.
+I formally object to the parallel, unauthorised action of the developer in fencing off the Sports England-allocated green space opposite the new development. This demonstrates a pattern of changing goalposts and eliminating public amenity, which I fear is preparatory action for future, unapproved development.
 `;
                 demandFencing = `3. Issuance of an enforcement notice for the **immediate removal of the unauthorised fencing** on the Sports England plot.`;
             }
@@ -114,7 +208,7 @@ I formally object to the parallel, unauthorised action of the developer in fenci
             let proceduralSection = "";
             if (includeNotification) {
                 const proceduralPoints = shuffleArray([
-                    `I received **no formal notification** of the **${planningData.refDischarge}** application, despite being an immediately affected party whose property value premise (access to green space) is being fundamentally undermined.`,
+                    `I received no formal notification of the **${planningData.refDischarge}** application, despite being an immediately affected party. This is a serious failure to notify the most affected residents.`,
                     `The Council’s failure to notify residents about an application that removes a designated Public Open Space constitutes a serious procedural failure and lack of administrative fairness.`,
                 ]);
 
@@ -135,11 +229,11 @@ I formally object to the parallel, unauthorised action of the developer in fenci
             const demandsSection = `
 ### Demand for Immediate and Decisive Enforcement
 
-The Planning Team must act decisively to protect the integrity of the local amenity and the planning process:
+${selectRandom(phrases[style].conclusion)}
 
-1.  **Immediate and Unequivocal REFUSAL** of Discharge of Condition 27 (**${planningData.refDischarge}**).
+1.  ${selectRandom(phrases.details.enforcementDemands.refuse)}
 
-2.  **IMMEDIATE INITIATION OF ENFORCEMENT ACTION** to mandate the full restoration of the Walled Garden to its required specification, including the **replanting of all ${planningData.totalTrees} fruit trees** (including the ${planningData.rareTrees} rare varieties), the **${planningData.lawnArea} rich lawn**, and the restoration of **guaranteed public access**.
+2.  ${selectRandom(phrases.details.enforcementDemands.restore)}
 
 ${demandFencing}
 `;
