@@ -23,34 +23,30 @@
 <body class="bg-gray-50">
 
     <div class="min-h-screen">
-        <!-- Header -->
         <header class="bg-blue-800 text-white p-6 shadow-xl">
             <div class="container mx-auto max-w-6xl">
                 <h1 class="text-3xl font-bold">🌳 College Park Community Action Hub</h1>
-                <p class="mt-1 text-blue-200">The most effective way to register your objection against the developer's breaches.</p>
+                <p class="mt-1 text-blue-200">The most effective way to help register your objection against the developer's breaches.</p>
             </div>
         </header>
 
-        <!-- Navigation Tabs -->
         <nav class="bg-white shadow-md sticky top-0 z-10">
             <div class="container mx-auto max-w-6xl flex">
                 <button class="tab-button active text-gray-700 font-semibold py-4 px-6 border-b-4 border-blue-600" data-tab="generator">
                     ✍️ Letter Generator
                 </button>
                 <button class="tab-button text-gray-500 font-medium py-4 px-6 border-b-4 border-transparent hover:border-gray-300" data-tab="flyer">
-                    📰 Community Flyer / Guide
+                    📰 Community Guide
                 </button>
             </div>
         </nav>
 
         <main class="container mx-auto max-w-6xl p-4 md:p-8">
 
-            <!-- Tab Content: Letter Generator -->
             <div id="generator" class="tab-content active">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-2">Step 1: Customize Your Objection Letter</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-2">Step 1: Customize Your Letter of Objection/Support</h2>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- Controls Column -->
                     <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-lg border border-gray-100 h-fit sticky top-20">
                         <h3 class="text-xl font-semibold mb-4 text-blue-700">Your Details</h3>
                         <div class="space-y-4">
@@ -71,15 +67,15 @@
 
                         <div class="styled-hr"></div>
 
-                        <h3 class="text-xl font-semibold mb-4 text-blue-700">Optional Arguments</h3>
+                        <h3 class="text-xl font-semibold mb-4 text-blue-700">Key Arguments</h3>
                         <div class="space-y-3">
                             <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="checkbox" id="includeFencing" class="form-checkbox h-5 w-5 text-blue-600 rounded" onchange="generateLetter()">
-                                <span class="text-gray-700">Include **Fencing** Breach (Sports Plot)</span>
+                                <input type="checkbox" id="includeProcedural" class="form-checkbox h-5 w-5 text-blue-600 rounded" onchange="generateLetter()" checked>
+                                <span class="text-gray-700">Include Procedural Failure (No Notification)</span>
                             </label>
                             <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="checkbox" id="includeProcedural" class="form-checkbox h-5 w-5 text-blue-600 rounded" onchange="generateLetter()" checked>
-                                <span class="text-gray-700">Include **Procedural Failure** (No Notification)</span>
+                                <input type="checkbox" id="includeGoalpost" class="form-checkbox h-5 w-5 text-blue-600 rounded" onchange="generateLetter()" checked>
+                                <span class="text-gray-700">Include Over-Development Risk (Goalpost Strategy)</span>
                             </label>
                         </div>
 
@@ -88,7 +84,6 @@
 
                     </div>
 
-                    <!-- Output Column -->
                     <div class="lg:col-span-2">
                         <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 2: Review and Personalize</h2>
                         
@@ -121,21 +116,19 @@
                 </div>
             </div>
 
-            <!-- Tab Content: Community Flyer / Guide -->
             <div id="flyer" class="tab-content">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">Alternative: Write Your Own Letter (Key Facts & Guide)</h2>
                 <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <!-- Flyer content starts here (Copy of the markdown flyer) -->
-                    <h3 class="text-3xl font-extrabold text-red-700 mb-4 text-center">🛑 FORMAL OBJECTION GUIDE: Walled Garden Breach</h3>
-                    <p class="text-gray-700 text-center mb-6">Use these facts to write your own unique letter, or use the generator tool!</p>
+                    <h3 class="text-3xl font-extrabold text-red-700 mb-4 text-center">🛑 SUGGESTED OBJECTION POINTS: Walled Garden Issue</h3>
+                    <p class="text-gray-700 text-center mb-6">Use these facts to craft your own unique letter, or use the generator tool!</p>
                     
                     <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
                         <p class="font-bold text-blue-800">ACTION REQUIRED:</p>
                         <p class="mt-1 text-blue-700">Email your objection to: **jill.stephens@cheshirewestandchester.gov.uk**</p>
-                        <p class="mt-1 text-blue-700">Deadline: **ASAP**</p>
+                        <p class="mt-1 text-blue-700">Deadline: **7th November 2025**</p>
                     </div>
 
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">1. CORE REFERENCES (MUST INCLUDE)</h4>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">1. CORE REFERENCES (WE SUGGEST YOU INCLUDE)</h4>
                     <table class="min-w-full divide-y divide-gray-200 mb-6 border border-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -145,8 +138,8 @@
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             <tr>
-                                <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Application to Refuse</td>
-                                <td class="px-3 py-2 whitespace-nowrap text-sm text-red-600 font-semibold">25/00853/DIS (Discharge Condition 27)</td>
+                                <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Applications to Reject</td>
+                                <td class="px-3 py-2 whitespace-nowrap text-sm text-red-600 font-semibold">25/00853/DIS (Discharge Condition 27) &amp; 25/00148/TDC</td>
                             </tr>
                             <tr>
                                 <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Original Planning Permission</td>
@@ -165,58 +158,55 @@
 
                     <h4 class="text-xl font-bold text-gray-900 mb-3">2. FACTS ON DESTRUCTION & SCALE OF LOSS</h4>
                     <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4 mb-6">
-                        <li>The developer illegally **removed 12 rare apple trees** that were originally present and subject to a strict retention agreement.</li>
-                        <li>The approved plan required the planting of **54 new fruit trees** and **$2,391 \text{m}^2$ of Germinal Eco Species Rich Lawn**. None of this was delivered.</li>
-                        <li>The developer scored the destroyed, barren land as **zero (0) biodiversity** (filed 31 July 2025) to justify avoiding on-site restoration.</li>
-                        <li>The promise of **public access** was pivotal to the original consent (Ref: Christleton Parish Council Letter to CEO, 12 March 2025).</li>
+                        <li>The developer "accidentally" removed 12 rare apple trees that were originally present and subject to a strict retention agreement.</li>
+                        <li>The approved plan required the planting of 54 new fruit trees and 2,391 m2 of Germinal Eco Species Rich Lawn. None of this was delivered.</li>
+                        <li>The developer scored the destroyed, barren land as zero (0) biodiversity (filed 31 July 2025) to justify avoiding on-site restoration.</li>
+                        <li>The promise of public access was pivotal to the original consent (Ref: Christleton Parish Council Letter to CEO, 12 March 2025).</li>
                     </ul>
 
                     <h4 class="text-xl font-bold text-gray-900 mb-3">3. PATTERN OF NON-COMPLIANCE & RISK</h4>
                     <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4 mb-6">
-                        <li>The proposal for an **off-site cash payment** for a replacement orchard is inadequate and unacceptable to the community.</li>
-                        <li>**Unauthorized Fencing:** The developer also fenced off the Sports England green space, restricting resident access, demonstrating a pattern of removing public amenities.</li>
-                        <li>**Procedural Failure:** The Council failed to notify adjoining residents about application 25/00853/DIS, violating administrative fairness (DMPO 2015).</li>
-                        <li>**Goalpost Strategy:** The developer has already changed the design for the property once. If the required vegetation is lost, this will have little to prevent a large building site appearing with potentially many more properties, making the site **unrecognisable.**</li>
+                        <li>The proposal for an off-site cash payment for a replacement orchard is inadequate and unacceptable to the community.</li>
+                        <li>The actions demonstrate a pattern of disregard for public land and the original consent conditions.</li>
+                        <li>Procedural Failure: The Council failed to notify adjoining residents about application 25/00853/DIS, violating administrative fairness (DMPO 2015).</li>
+                        <li>Goalpost Strategy: If the required vegetation is lost, this will set a concerning precedent and increase the risk of over-development, making the site **unrecognisable**.</li>
                     </ul>
 
                     <h4 class="text-xl font-bold text-gray-900 mb-3">4. CALL TO UNITY & ACTION (The Demands)</h4>
                     <div class="bg-red-50 border-l-4 border-red-500 p-4 text-red-800">
                         <p class="font-bold text-xl mb-2">WE DEMAND THE COUNCIL:</p>
                         <ul class="list-decimal list-inside space-y-1 ml-4 text-lg">
-                            <li>**REFUSE** Discharge of Condition 27 (25/00853/DIS).</li>
-                            <li>**IMMEDIATELY INITIATE ENFORCEMENT ACTION** to compel the developer to reinstate the Walled Garden (all 66 trees + public access).</li>
-                            <li>**Order the IMMEDIATE REMOVAL** of the unauthorised fencing on the Sports England plot.</li>
+                            <li>REFUSE Discharge of Condition 27 (25/00853/DIS) and Application 25/00148/TDC.</li>
+                            <li>IMMEDIATELY INITIATE ENFORCEMENT ACTION to compel the developer to reinstate the Walled Garden (all 66 trees + public access).</li>
                         </ul>
                     </div>
 
                     <div class="mt-8 p-4 bg-gray-100 rounded-lg text-center">
                         <p class="font-bold text-lg text-gray-800">🤝 A Call to the Community:</p>
-                        <p class="text-gray-700 mt-2">We need to work together as a community, stick up for each other otherwise before we know it, we will live on an estate of 100 houses without the facilities to support nor the beauty of the site and area.</p>
+                        <p class="text-gray-700 mt-2">The text generated here is an excellent starting point for your letter, providing the correct references and structure. We strongly recommend that you personalize the content with your own experiences and thoughts before sending. This ensures your submission is unique and less likely to be disregarded by the Planning Team as a form response.</p>
                     </div>
                     
                     <div class="mt-6 p-3 bg-yellow-100 border border-yellow-300 rounded-lg text-center">
                         <p class="font-bold text-orange-700">YOUR LETTER</p>
-                        <p class="text-sm text-orange-700 mt-1">Do not copy this flyer! Write your points in your own words or personalise the generator.</p>
+                        <p class="text-sm text-orange-700 mt-1">Please use the generator to quickly draft your response, but always personalize it before you click send!</p>
                     </div>
                     
-                    <!-- Flyer content ends here -->
-                </div>
+                    </div>
             </div>
             
         </main>
     </div>
 
-    <!-- JavaScript for Functionality (Tab Switching, Generator Logic, Copying) -->
     <script>
         const $ = (id) => document.getElementById(id);
         const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
         
-        // --- Core Content Pool for Randomization (V7) ---
+        // --- Core Content Pool for Randomization (V11 - Finalized) ---
         const ALL_PHRASES = {
             // General structure elements and non-varying facts
             core: {
-                subjectPrefix: ['FORMAL OBJECTION AGAINST APPLICATION 25/00853/DIS', 'URGENT OBJECTION TO THE DISCHARGE OF CONDITION 27', 'PLANNING VIOLATION CONCERNING 25/00853/DIS'],
-                refString: `(Original Planning: 21/03468/FUL; Developer Plan: P.1706.22)`,
+                subjectPrefix: ['FORMAL OBJECTION AGAINST APPLICATION 25/00853/DIS & 25/00148/TDC', 'URGENT OBJECTION TO THE DISCHARGE OF CONDITION 27', 'PLANNING VIOLATION CONCERNING 25/00853/DIS'],
+                refString: `(Original Planning: 21/03468/FUL; Related Application: 25/00148/TDC)`,
                 introLead: [
                     'I am writing to register my strongest possible objection to the application for the Discharge of Condition 27, ref 25/00853/DIS. This submission fundamentally compromises the integrity of the planning system,',
                     'As a concerned resident and homeowner, I vehemently oppose the application for Discharge of Condition 27 (25/00853/DIS). This document seeks to retroactively forgive a severe, willful breach of core planning mandates,',
@@ -227,29 +217,24 @@
                     'by attempting to discharge a condition that protects a vital community asset.',
                     'as it seeks to legalize the total destruction of a key public amenity.',
                 ],
-                closingStatement: [
-                    'For the sake of upholding planning law, maintaining community trust, and preserving the character of our area, I urge the Planning Team to act decisively.',
-                    'The integrity of the planning process demands that this application be rejected. I trust the Council will prioritize enforcement and resident amenity over developer convenience.',
-                    'I expect the Council to uphold the original terms of consent. Your enforcement is essential to prevent future degradation of our living environment.',
-                ],
             },
             
             // 1. Walled Garden Breach arguments (High Variance)
             walledGarden: {
                 header: ['Deliberate Breach of Mandated Public Access and Planting', 'Willful Destruction of a Key Community Asset', 'Failure to Enforce Walled Garden Obligations'],
                 rareTreeSentence: [
-                    'The original consent mandated the retention of 12 rare apple trees, which were summarily removed entirely during construction.',
-                    'A strict retention agreement was breached when 12 rare apple trees were cleared from the site.',
-                    'The destruction of the 12 rare apple trees, originally present on the plot, demonstrates the developer\'s total disregard for environmental conditions.',
+                    'The original consent mandated the retention of 12 rare apple trees, which were "accidentally" removed entirely during construction.',
+                    'A strict retention agreement was breached when 12 rare apple trees were "accidentally" cleared from the site.',
+                    'The "accidental" destruction of the 12 rare apple trees, originally present on the plot, demonstrates the developer\'s total disregard for environmental conditions.',
                 ],
                 plantingLossSentence: [
-                    'In addition to the lost rare trees, the approved plans required the planting of 54 new fruit trees alongside $2,391 \\text{m}^2$ of Germinal Eco Species Rich Lawn.',
-                    'The scale of the failure is massive: 54 new fruit trees and over $2,300 \\text{m}^2$ of species-rich lawn remain unplanted, constituting a total breach of the landscape scheme.',
-                    'The approved scheme, requiring 54 new fruit trees and a significant area of rich lawn (around $2,391 \\text{m}^2$), has been completely abandoned.',
+                    'In addition to the lost rare trees, the approved plans required the planting of 54 new fruit trees alongside 2,391 m2 of Germinal Eco Species Rich Lawn. None of this was delivered.',
+                    'The scale of the failure is massive: 54 new fruit trees and over 2,300 m2 of species-rich lawn remain unplanted, constituting a total breach of the landscape scheme.',
+                    'The approved scheme, requiring 54 new fruit trees and a significant area of rich lawn (around 2,391 m2), has been completely abandoned.',
                 ],
                 accessPromiseSentence: [
                     'The Walled Garden was explicitly designated as Public Open Space (POS) on the developer\'s plan (P.1706.22, Page 30), guaranteeing public access to residents.',
-                    'Public access to the Walled Garden was a non-negotiable term of the original consent, documented as Public Open Space (POS).',
+                    'The promise of public access was pivotal to the original consent (Ref: Christleton Parish Council Letter to CEO, 12 March 2025).',
                     'The commitment to public access, noted in Parish Council correspondence, was a pivotal condition that has now been unilaterally withdrawn.',
                 ],
             },
@@ -258,7 +243,7 @@
             misrepresentation: {
                 header: ['Misrepresentation and Manipulation via Low Biodiversity Score', 'Developer Strategy to Justify Destruction', 'The Low Biodiversity Valuation Tactic'],
                 valuationTactic: [
-                    'By scoring the destroyed, cleared land as "zero (0)" biodiversity, the developer is cynically attempting to use their own unpunished act of destruction to legally justify avoiding on-site reinstatement.',
+                    'The developer scored the destroyed, barren land as zero (0) biodiversity (filed 31 July 2025) to justify avoiding on-site restoration.',
                     'The developer\'s filing (dated 31 July 2025) which scores the cleared land as "Artificial Unvegetated" with a value of zero, is a transparent tactic to manipulate the enforcement process.',
                     'It is shocking that the developer assigns zero biodiversity value to the plot *after* actively stripping it. This is a direct attempt to normalize the breach.',
                 ],
@@ -272,31 +257,20 @@
                     'This lack of notification prevents public scrutiny of a proposal that fundamentally removes a community asset.',
                     'I demand an explanation, referencing the DMPO 2015, as to why this material change was deemed non-notifiable.',
                 ],
-            },
-            
-            // 3. Fencing and Goalpost arguments (High Variance)
-            fencing: {
-                header: ['Unauthorised Restriction of Secondary Green Space', 'Pattern of Changing Goalposts and Over-Development Risk'],
-                fencingBreach: [
-                    'I formally object to the developer’s unauthorised fencing of the Sports England green space opposite the new development.',
-                    'The sudden, unapproved fencing restricts resident access to a promised communal space under the pretext of public safety.',
-                    'This simultaneous action of fencing off the Sports England plot demonstrates a clear pattern of removing all available public land for potential future use.',
-                ],
                 goalpostRisk: [
-                    'This pattern of changing goalposts and non-compliance, if allowed, will ultimately result in the site becoming unrecognizable and lacking the facilities to support the new community.',
-                    'If enforcement is not initiated now, there will be little to prevent this site from becoming a large building project with potentially many more properties, destroying the area\'s character.',
-                    'Allowing this discharge sets a dangerous precedent, greenlighting future applications that further degrade the visual and environmental quality of the estate.',
+                    'This pattern of broken promises shows a clear strategy to maximize private land at the community\'s expense, and risks the site becoming unrecognizable.',
+                    'If enforcement is not initiated now, there will be little to prevent this site from becoming over-developed, destroying the area\'s character.',
+                    'Allowing this discharge sets a concerning precedent, greenlighting future applications that further degrade the visual and environmental quality of the estate.',
                 ],
-            },
-            
-            // 4. Demands (High Variance)
-            demands: {
-                refuse: ['REFUSE Discharge of Condition 27 (25/00853/DIS) unequivocally.', 'The application to discharge Condition 27 must be rejected immediately.', 'I demand the Planning Team refuse application 25/00853/DIS without compromise.'],
-                enforcement: ['INITIATE ENFORCEMENT ACTION to compel the developer to fully reinstate the Walled Garden, including all 66 trees and guaranteed public access.', 'Issue an enforcement notice requiring the immediate reinstatement of the Walled Garden orchard, complete with all 66 trees and community access.', 'Compel the developer to physically reinstate the Public Open Space (Walled Garden) as per the original mandate.'],
-                fencing: ['Order the IMMEDIATE REMOVAL of the unauthorised fencing on the Sports England plot.', 'Require the removal of the new fencing and guarantee resident access to the Sports England plot.', 'Demand that the developer immediately restores access to the Sports England green space.'],
             },
 
-            // Tone-specific arrays (must select one option from each array)
+            // 3. Demands (Forceful Tone)
+            demands: {
+                refuse: ['REFUSE Discharge of Condition 27 (25/00853/DIS) and Application 25/00148/TDC.', 'The applications to discharge Condition 27 and 25/00148/TDC MUST be rejected immediately.', 'I demand the Planning Team refuse applications 25/00853/DIS and 25/00148/TDC without compromise.'],
+                enforcement: ['IMMEDIATELY INITIATE ENFORCEMENT ACTION to compel the developer to fully reinstate the Walled Garden, including all 66 trees and guaranteed public access.', 'Issue an enforcement notice REQUIRING the immediate reinstatement of the Walled Garden orchard, complete with all 66 trees and community access.', 'Compel the developer to PHYSICALLY REINSTATE the Public Open Space (Walled Garden) as per the original mandate.'],
+            },
+
+            // Tone-specific arrays 
             formal: {
                 subjectPrefix: ['FORMAL OBJECTION: Statutory Breach of Planning Condition 27', 'PLANNING ENFORCEMENT REQUIRED: Breach of 21/03468/FUL'],
                 closingSalutation: 'I await confirmation that definitive enforcement action will be taken.',
@@ -322,8 +296,8 @@
             const userAddress = $('userAddress').value;
             const userPostcode = $('userPostcode').value;
             const toneStyle = $('toneSelect').value;
-            const includeFencing = $('includeFencing').checked;
             const includeProcedural = $('includeProcedural').checked;
+            const includeGoalpost = $('includeGoalpost').checked;
 
             const now = new Date();
             const date = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -340,37 +314,33 @@
             // --- 2. Build Argument Sections (Shuffled) ---
             const sections = [];
 
-            // A. Walled Garden Breach (Mandatory Core Argument)
+            // A. Walled Garden Breach (Mandatory Core Argument) - Cleaned
             sections.push(`
-**1. ${rand(ALL_PHRASES.walledGarden.header)}**
+1. ${rand(ALL_PHRASES.walledGarden.header)}
 The original planning permission (21/03468/FUL) was contingent on core obligations that have been decisively violated:
 * ${rand(ALL_PHRASES.walledGarden.rareTreeSentence)}
 * ${rand(ALL_PHRASES.walledGarden.plantingLossSentence)}
 * ${rand(ALL_PHRASES.walledGarden.accessPromiseSentence)}
 `);
 
-            // B. Misrepresentation / Low Score (Mandatory Core Argument)
-            sections.push(`
-**2. ${rand(ALL_PHRASES.misrepresentation.header)}**
+            // B. Misrepresentation / Low Score (Mandatory Core Argument) - Cleaned
+            let misrepresentationSection = `
+2. ${rand(ALL_PHRASES.misrepresentation.header)}
 The developer is cynically attempting to use the Discharge application to legalize their pre-existing breach:
 * ${rand(ALL_PHRASES.misrepresentation.valuationTactic)}
 * ${rand(ALL_PHRASES.misrepresentation.offSiteInadequacy)}
-${includeProcedural ? `* **Procedural Failure:** ${rand(ALL_PHRASES.misrepresentation.proceduralFailure)}` : ''}
-`);
+`;
+            if (includeProcedural) {
+                 misrepresentationSection += `* Procedural Failure: ${rand(ALL_PHRASES.misrepresentation.proceduralFailure)}`;
+            }
+            sections.push(misrepresentationSection);
 
-            // C. Fencing and Goalposts (Optional/Variable Argument)
-            if (includeFencing) {
+            // C. Goalposts/Risk (Optional Argument) - Cleaned
+            if (includeGoalpost) {
                 sections.push(`
-**3. ${rand(ALL_PHRASES.fencing.header)}**
-The developer's actions show a clear strategy to maximize private land at the community\'s expense:
-* ${rand(ALL_PHRASES.fencing.fencingBreach)}
-* ${rand(ALL_PHRASES.fencing.goalpostRisk)}
-`);
-            } else {
-                 sections.push(`
-**3. Pattern of Erosion and Over-Development Risk**
-The developer's pattern of broken promises shows a clear strategy to maximize private land at the community\'s expense:
-* ${rand(ALL_PHRASES.fencing.goalpostRisk)}
+3. Risk of Over-Development and Precedent
+The developer's pattern of poor compliance and broken promises raises significant concern for the long-term character of the estate:
+* ${rand(ALL_PHRASES.misrepresentation.goalpostRisk)}
 `);
             }
             
@@ -382,8 +352,8 @@ The developer's pattern of broken promises shows a clear strategy to maximize pr
 
             letter += sections.join('\n');
 
-            // --- 3. Demands ---
-            letter += `\n\n**DEMAND FOR IMMEDIATE ENFORCEMENT ACTION**\n`;
+            // --- 3. Demands (Forceful and Cleaned) ---
+            letter += `\n\nDEMAND FOR IMMEDIATE ENFORCEMENT ACTION\n`;
             letter += `For the reasons outlined above, I formally request that the Planning Team takes the following definitive steps:\n\n`;
             
             const demands = [
@@ -391,11 +361,7 @@ The developer's pattern of broken promises shows a clear strategy to maximize pr
                 `2. ${rand(ALL_PHRASES.demands.enforcement)}`,
             ];
 
-            if (includeFencing) {
-                demands.push(`3. ${rand(ALL_PHRASES.demands.fencing)}`);
-            }
-
-            // Shuffle demands for final uniqueness
+            // Shuffle demands for final uniqueness 
             for (let i = demands.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [demands[i], demands[j]] = [demands[j], demands[i]];
@@ -403,10 +369,10 @@ The developer's pattern of broken promises shows a clear strategy to maximize pr
 
             letter += demands.join('\n');
             
-            // --- 4. Closing ---
+            // --- 4. Closing (Cleaned) ---
             letter += `\n\n${rand(selectedStyle.closingSalutation)}\n\n`;
 
-            const finalLetter = `${userName}\n${userAddress}\n${userPostcode}\n\n${date}\n\n**To the Planning Team at Cheshire West Council**\n\n${letter}\n\n${signatureLine}`;
+            const finalLetter = `${userName}\n${userAddress}\n${userPostcode}\n\n${date}\n\nTo the Planning Team at Cheshire West Council\n\n${letter}\n\n${signatureLine}`;
             
             $('letterOutput').value = finalLetter;
             
